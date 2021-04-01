@@ -1,8 +1,10 @@
+
+
 function resetAddForm() {
   document.getElementById('addform').reset();
 }
 
-const addQuestion = () => {
+const addBookmark = () => {
   let tags = document.getElementById('tags').value;
   let name = document.getElementById(`name`).value;
   let link = document.getElementById('url').value;
