@@ -1,0 +1,12 @@
+#option3{
+    display: none;
+}
+#option4{
+    display: none;
+}
+.active {
+    color: white;
+}
+.btn{
+    padding: 5px 16px;
+}
