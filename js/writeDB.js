@@ -25,7 +25,7 @@ const addBookmark = () => {
     if (confirm('Are you sure you want to save the bookmark?')) {
         // Edit
         console.log(formData);
-        fetch('https://final-project-server-3p9ru.ondigitalocean.app/bookmarks/create', {
+        fetch('https://final-project-server-3p9ru.ondigitalocean.app/api/v1/bookmarks/create', {
         method: 'post',
         mode: 'cors',
         cache: 'no-cache',

@@ -1,5 +1,5 @@
 function dispData() {
-  fetch('https://final-project-server-3p9ru.ondigitalocean.app/bookmarks')
+  fetch('https://final-project-server-3p9ru.ondigitalocean.app/api/v1/bookmarks')
       .then(response => response.json())
       .then(data => {
 
@@ -42,7 +42,7 @@ function deleteQuestion(uuid) {
   if (confirm('Are you sure you want to delete the question?')) {
       // Delete!
       console.log('Question deleted with ID: ' + uuid);
-      fetch('https://final-project-server-3p9ru.ondigitalocean.app/bookmarks/' + uuid, {
+      fetch('https://final-project-server-3p9ru.ondigitalocean.app/api/v1/bookmarks/' + uuid, {
           method: 'delete',
           mode: 'cors',
           cache: 'no-cache'
