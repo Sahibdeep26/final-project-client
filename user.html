@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<script type="text/javascript">
+function reload() {
+	if(!window.location.hash) {
+		window.location = window.location + '#loaded';
+		window.location.reload();
+	}else{
+    dispData()
+  }
+}
+</script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+<link rel="stylesheet" href="./css/style.css" />
+
+</head>
+<body onload="reload()">
+
+<!--Header-->
+  <div class="container-fluid text-center">
+    <h1 class="bg-dark py-4 text-white"><i class="fab fa-cloudversify"></i> Cloudmark</h1>
+  </div>
+
+  <br>
+  
+  <!-- Add Modal -->
+  <div class="container-fluid">
+    <div class="modal fade" id="addBookmarkModal" tabindex="-1" aria-labelledby="addBookmarkModal"aria-hidden="true">
+      
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h2 class="modal-title w-100 text-center" id="QuestionModalHead">Add Bookmark</h2>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" onclick="resetForms()"><span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <form name="addForm" id="addForm">
+              <div class="form col-12 md-3">
+                <div class="card">        
+                  <div class="card-body">
+        
+                    <div class="col-md-12 mb-3">
+                      <label for="tags">Tags</label>
+                      <textarea class="form-control" name="tags" id="tags" placeholder="Add Tags" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="col-md-12 mb-3">
+                      <label for="name">Edit Name</label>
+                      <input type="text" class="form-control" name="name" id="name" placeholder="Add Name" required>
+                    </div>
+        
+                    <div class="col-md-12 mb-3">
+                      <label for="url">Edit URL</label>
+                      <input type="url" class="form-control" name="url" id="url" placeholder="https://example.com"  required>
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="resetForms()">Close</button>
+            <button type="button" class="btn btn-primary" onclick="addBookmark()" data-bs-dismiss="modal">Save</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Edit Modal -->
+  <div class="container-fluid">
+    <div class="modal fade" id="editBookmarkModal" tabindex="-1" aria-labelledby="editBookmarkModal"aria-hidden="true">
+      
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h2 class="modal-title w-100 text-center" id="BookmarkModalHead">Edit Bookmark</h2>
+            <button type="button" class="close"  onclick="resetForms()" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+
+          <div class="modal-body">
+
+            <form name="editForm" id="editForm">
+              <div class="form col-12">
+                <div class="card">        
+                  <div class="card-body">
+        
+                    <div class="col-md-12 mb-3">
+                      <label for="bookTags">Edit Tags</label>
+                      <textarea class="form-control" name="bookTags" id="bookTags" placeholder="Edit Tags" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="col-md-12 mb-3">
+                      <label for="bookName">Edit Name</label>
+                      <input type="text" class="form-control" name="bookName" id="bookName" placeholder="Edit Name" rows="3" required>
+                    </div>
+        
+                    <div class="col-md-12 mb-3">
+                      <label for="bookURL">Edit URL</label>
+                      <input type="url" class="form-control" name="bookURL" id="bookURL" placeholder="Edit URL" rows="3" required>
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="resetForms()">Close</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Add Bookmark Button-->
+  <div class="container d-flex justify-content-end">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addBookmarkModal">
+      <i class="far fa-bookmark"></i>&nbsp;  Add Bookmark
+    </button>
+  </div>
+  
+
+
+
+
+  <!-- All Bookmarks Display -->
+  <div class="container">
+    <div class="row card text-white bg-dark align-middle" id="myTable">
+      <div class="card-header">        
+        <h4>Saved Bookmarks</h4>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+  <a href="./index.html" class="btn btn-dark btn-lg" role="button" id="goBack">&#8249 &nbspGo Back</a>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="./js/adminTable.js"></script>
+
+
+</body>
+</html>

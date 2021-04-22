@@ -1,37 +1,76 @@
+body{
+    background-color:whitesmoke;
+}
+
 .d-flex button{
     padding:.3em 2.4em;
     margin: 1.5em .6em;
 }
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0px;
-}
-.table td, .table th{
-    padding: 1.8em;
-    text-align:center;
-    vertical-align:top;
-    border-top: 1px solid var(--border);
-}
 
-.table td > a.btn{
-    padding:0em 0.4em;
-    font-size: 1.3em;
-    margin: 0.3em;
-}
-
-.btn-dark{
+#goBack{
 	position:relative;
-    top: 30px;
-	bottom: 10%;
+    top: 10em;
+	bottom: 2em;
 	left: 3%;
-	background-color:black;
+	background-color:#343a40;
 	color:white;
 }
 
-#deleteBtn{
+/* #deleteBtn{
     color:red;
 }
 #updateBtn{
     color:rgb(0, 200, 0);
+} */
+
+#myTable{
+    padding-top: 0.5em;
+}
+
+.dropdown-menu{
+    background-color: #343a40;
+}
+.dropdown-item:hover{
+    background-color:gray;
+}
+.dropdown-item{
+    padding-bottom: .5em;
+    padding-top: .5em;
+}
+#options{
+    align-items: right;
+}
+
+.login-form {
+    width: 300px;
+    margin: 0 auto;
+    font-family: Tahoma, Geneva, sans-serif;
+}
+.login-form h1 {
+    text-align: center;
+    color: #4d4d4d;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+}
+.login-form input[type="password"],
+.login-form input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #dddddd;
+    margin-bottom: 15px;
+    box-sizing:border-box;
+}
+.login-form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #535b63;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+table caption {
+ caption-side:top;    
 }
