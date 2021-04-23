@@ -48,19 +48,14 @@ function reload() {
               <div class="form col-12 md-3">
                 <div class="card">        
                   <div class="card-body">
-        
+
                     <div class="col-md-12 mb-3">
-                      <label for="tags">Tags</label>
-                      <textarea class="form-control" name="tags" id="tags" placeholder="Add Tags" rows="3"></textarea>
-                    </div>
-                    
-                    <div class="col-md-12 mb-3">
-                      <label for="name">Edit Name</label>
+                      <label for="name">Name</label>
                       <input type="text" class="form-control" name="name" id="name" placeholder="Add Name" required>
                     </div>
         
                     <div class="col-md-12 mb-3">
-                      <label for="url">Edit URL</label>
+                      <label for="url">URL</label>
                       <input type="url" class="form-control" name="url" id="url" placeholder="https://example.com"  required>
                     </div>
                   
@@ -100,14 +95,9 @@ function reload() {
               <div class="form col-12">
                 <div class="card">        
                   <div class="card-body">
-        
+              
                     <div class="col-md-12 mb-3">
-                      <label for="bookTags">Edit Tags</label>
-                      <textarea class="form-control" name="bookTags" id="bookTags" placeholder="Edit Tags" rows="3"></textarea>
-                    </div>
-                    
-                    <div class="col-md-12 mb-3">
-                      <label for="bookName">Edit Name</label>
+                      <label for="bookName">Rename</label>
                       <input type="text" class="form-control" name="bookName" id="bookName" placeholder="Edit Name" rows="3" required>
                     </div>
         
@@ -125,7 +115,7 @@ function reload() {
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="resetForms()">Close</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-primary" id="updateBookmark" data-bs-dismiss="modal">Save</button>
           </div>
 
         </div>

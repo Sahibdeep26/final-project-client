@@ -22,7 +22,7 @@ function dispData() {
               </div>
           `);
               document.getElementById(`editButton-${i}`).addEventListener("click", () => {
-                editFormLoader(data[i].id, data[i].publisher, data[i].title, data[i].link);
+                editFormLoader(data[i].uuid, data[i].title, data[i].link);
               });
           }
       });
@@ -34,13 +34,56 @@ function resetForms() {
 
 }
 
-function editFormLoader (uuid, publisher, title, link) {
-  document.getElementById('bookTags').value = publisher;
+function editFormLoader (uuid, title, link) {
   document.getElementById(`bookName`).value = title ;
   document.getElementById('bookURL').value = link;
+
+  document.getElementById('updateBookmark').addEventListener("click", () => updateBookmark(uuid))
 }
 
-function deleteQuestion(uuid) {
+const updateBookmark = (uuid) => {
+  let title = document.getElementById(`bookName`).value;
+  let link = document.getElementById('bookURL').value;
+
+  let formData = {
+    "uuid": uuid,
+    "link": link,
+    "title": title,
+  }
+
+  if(title==""){
+    alert("Please provide a name for the bookmark")
+    return false;
+  }else if(link==""){
+    alert("Please provide a URL");
+    return false;
+  }else{
+    if (confirm('Are you sure you want to edit the bookmark?')) {
+        // Edit
+        console.log('Bookmark edit with ID: ' + uuid);
+        fetch('https://final-project-server-3p9ru.ondigitalocean.app/api/v1/bookmarks/edit/' + uuid, {
+        method: 'PUT',
+        mode: 'cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    }).then(response => response).then(data => {
+        console.log(data);
+        location.reload();
+      });
+      resetForms();
+    }else {
+          // skip
+          console.log('Edit Cancelled');
+      }
+    }
+    
+  }
+
+
+function deleteBookmark(uuid) {
   if (confirm('Are you sure you want to delete the question?')) {
       // Delete!
       console.log('Question deleted with ID: ' + uuid);
@@ -60,14 +103,12 @@ function deleteQuestion(uuid) {
 
 
 const addBookmark = () => {
-  let tags = document.getElementById('tags').value;
   let name = document.getElementById(`name`).value;
   let link = document.getElementById('url').value;
 
   let formData = {
     "link": link,
     "title": name,
-    "publisher": tags
   }
 
   if(name==""){
@@ -101,9 +142,8 @@ const addBookmark = () => {
 } 
 
 
-
 function validURL(str) {
-  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+  let pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
     '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
     '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
