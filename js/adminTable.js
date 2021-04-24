@@ -48,7 +48,7 @@ const updateBookmark = (uuid) => {
   let formData = {
     "uuid": uuid,
     "link": link,
-    "title": title,
+    "title": title
   }
 
   if(title==""){
