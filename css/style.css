@@ -10,8 +10,6 @@ body{
     padding: 0;
     border-radius: 50%;
     position: relative;
-    right: 1em;
-    left: 39.9em;
 }
 
 #goBack{
@@ -23,6 +21,12 @@ body{
 	color:white;
 }
 
+/* #deleteBtn{
+    color:red;
+}
+#updateBtn{
+    color:rgb(0, 200, 0);
+} */
 
 #myTable{
     padding-top: 0.5em;
