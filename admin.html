@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./css/style.css"/>
 
 </head>
-<body>
+<body onload="reload()">
 
     <div class="container-fluid text-center bg-dark">
         <h1 class="py-4 text-white"><i class="fab fa-cloudversify"></i> Cloudmark</h1>
@@ -24,53 +24,18 @@
     <div class="container">
         <div class="table-responsive">
             <table class="table table-dark bg-dark align-middle table-borderless">
-                <caption><h2>Stats</h2></caption>
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Method</th>
-                        <th scope="col">Endpoint</th>
-                        <th scope="col">Requests</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>POST</td>
-                        <td>/api/v1/bookmarks/create</td>
-                        <td>45</td>
-                    </tr>
-
-
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>DELETE</td>
-                        <td>
-                            ​/api​/v1​/bookmarks​/{id}
-                        </td>
-                        <td>45</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>GET</td>
-                        <td>/api/v1/bookmarks/</td>
-                        <td>45</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>GET</td>
-                        <td>/api/v1/</td>
-                        <td>45</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>GET</td>
-                        <td>/api/v1/stats/</td>
-                        <td>45</td>
-                    </tr>
-                </tbody>
+              <caption><h2>Stats</h2></caption>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Method</th>
+                  <th scope="col">Endpoint</th>
+                  <th scope="col">Requests</th>
+                </tr>
+               </thead>
+              <tbody id="myTable">
+                
+              </tbody>
             </table>
         </div>
     </div>
@@ -87,5 +52,18 @@ crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="./js/adminTable.js"></script>
     
+
+
+
+<script type="text/javascript">
+    function reload() {
+        if(!window.location.hash) {
+            window.location = window.location + '#loaded';
+            window.location.reload();
+        }else{
+            disStats();
+        }
+    }
+    </script>
 </body>
 </html>

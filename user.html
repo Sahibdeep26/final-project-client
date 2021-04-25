@@ -3,18 +3,6 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-<script type="text/javascript">
-function reload() {
-	if(!window.location.hash) {
-		window.location = window.location + '#loaded';
-		window.location.reload();
-	}else{
-    dispData()
-  }
-}
-</script>
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
 <link rel="stylesheet" href="./css/style.css" />
@@ -44,7 +32,7 @@ function reload() {
           </div>
 
           <div class="modal-body">
-            <form name="addForm" id="addForm">
+            <form name="addForm" id="addForm" autocomplete="off">
               <div class="form col-12 md-3">
                 <div class="card">        
                   <div class="card-body">
@@ -91,7 +79,7 @@ function reload() {
 
           <div class="modal-body">
 
-            <form name="editForm" id="editForm">
+            <form name="editForm" id="editForm" autocomplete="off">
               <div class="form col-12">
                 <div class="card">        
                   <div class="card-body">
@@ -135,8 +123,8 @@ function reload() {
 
   <!-- All Bookmarks Display -->
   <div class="container">
-    <div class="row card text-white bg-dark align-middle" id="myTable">
-      <div class="card-header">        
+    <div class="col card text-white bg-dark" id="myBookmarks">
+      <div class="card-header text-center">        
         <h4>Saved Bookmarks</h4>
       </div>
     </div>
@@ -154,6 +142,18 @@ crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="./js/adminTable.js"></script>
 
+
+
+<script type="text/javascript">
+  function reload() {
+    if(!window.location.hash) {
+      window.location = window.location + '#loaded';
+      window.location.reload();
+    }else{
+      dispData()
+    }
+  }
+  </script>
 
 </body>
 </html>
